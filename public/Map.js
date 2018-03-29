@@ -8,10 +8,14 @@ class Map{
         //this.view = createVector(0, 0);
         this.target = createVector(0, 0);
         this.offset = this.view;
+        this.bullets = [];
     }
 
     move(){
-        
+        if(keyIsDown(32)){
+            this.bullets.push(new Bullet(blob.location.x, blob.location.y, mouseX, mouseY));
+
+        }
 
         
         if(keyIsDown(LEFT_ARROW) || keyIsDown(65)){
@@ -45,6 +49,12 @@ class Map{
     }
 
     show(){
+
+        for(let b of this.bullets){
+            b.move();
+            b.show();
+        }
+
         push();
         stroke('black');
         strokeWeight(5);
@@ -58,7 +68,7 @@ class Map{
         //ellipse(mouseX , mouseY, 20);
         line(this.view.x, this.view.y, this.width + this.view.x, this.height + this.view.y );
         line(this.view.x, this.height + this.view.y,this.width + this.view.x, this.view.y );
-        ellipse(this.view.x + blob.location.x - 409, this.view.y + blob.location.y - 184, 50);
+        //ellipse(this.view.x + blob.location.x - 409, this.view.y + blob.location.y - 184, 50);
         
         pop();
     }

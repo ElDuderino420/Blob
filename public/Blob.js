@@ -10,6 +10,8 @@ class Blob{
 
 
     move(){
+
+        
         
         this.location = p5.Vector.lerp(this.location, this.target, 0.1);
         
